@@ -6,3 +6,15 @@ function deleteTask(id) {
   taskStorage.storage.splice(taskStorage.map[id], 1);
   taskStorage.refreshMap();
 }
+
+function deleteAllTask() {
+
+  const currentContainer = document.querySelector('.container__task_list');
+  const emptyContainer = currentContainer.cloneNode(false);
+
+  document.querySelector('.container__task').replaceChild(emptyContainer, currentContainer)
+
+  taskStorage.storage = [];
+  taskStorage.refreshMap();
+
+}

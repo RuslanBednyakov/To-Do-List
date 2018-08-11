@@ -7,10 +7,10 @@ function addTask() {
     let task = new Task (value);
     task.add();
 
+    taskStorage.pushStorage(task);
+
     document.getElementById('interfaceInput').value = '';
 
-    taskStorage.pushStorage(task);
-    
 }
 
 // const buttonAdd = document.getElementById('interfaceButtonAdd');

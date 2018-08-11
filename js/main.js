@@ -3,6 +3,7 @@ function TaskStorage () {
   this.storage = [];
   this.map = {};
   this.filter = 'all';
+  this.completeAll = true;
 
 };
 
@@ -78,6 +79,6 @@ Task.prototype.add = function() {
   this.taskDomOdj = li;
   this.liText = liText;
 
-  document.querySelector('.container__task_list').appendChild(li);
+  document.querySelector('.container__task_list').insertBefore(li, document.querySelector('.container__task_list').firstChild);
 
 };

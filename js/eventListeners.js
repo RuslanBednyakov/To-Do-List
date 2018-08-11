@@ -18,6 +18,14 @@ function events (event) {
       deleteTask(id);
       break;
 
+    case 'button-complete-all':
+    completeAllTask();
+    break;
+
+    case 'button-delete-all':
+    deleteAllTask();
+    break;
+
     default: return;
   }
 
