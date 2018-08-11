@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="To Do List" content="To Do List">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="chromeframe">Hello, sorry but you are using old version of browser. Please, <a href="https://browsehappy.com/"> download the latest version of browser for free</a>
+    <![endif]-->
+    <header class="header">
+        <h1 class="header__title"> To Do List </h1>
+    </header>
+    <article class="container">
+        <section class="container__interface">
+            <input type="text" placeholder="Text" class="container__interface_input" id="interfaceInput">
+            <button class="container__interface_button" id="interfaceButtonAdd" data-name="button-add"> Add </button>
+        </section>
+        <section class="container__task">
+            <ul class="container__task_list"></ul>
+        </section>
+    </article>
+    <script src="js/main.js"></script>
+    <script src="js/addTask.js"></script>
+    <script src="js/completeTask.js"></script>
+    <script src="js/deleteTask.js"></script>
+    <script src="js/eventListeners.js"></script>
+<body>
