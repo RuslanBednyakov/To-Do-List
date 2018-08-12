@@ -24,11 +24,17 @@
         </section>
         <section class="container__task">
             <ul class="container__task_list"></ul>
+            <div class="container__task_filter">
+                <button class="container__task_button button__filter_active" id="taskButtonFilterActive" data-name="button-filter-active"> Active </button>
+                <button class="container__task_button button__filter_complete" id="taskButtonFilterComplete" data-name="button-filter-complete"> Complete </button>
+                <button class="container__task_button button__filter_all" id="taskButtonFilterAll" data-name="button-filter-all"> All </button>
+            </div>
         </section>
     </article>
     <script src="js/main.js"></script>
     <script src="js/addTask.js"></script>
     <script src="js/completeTask.js"></script>
     <script src="js/deleteTask.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/eventListeners.js"></script>
 <body>

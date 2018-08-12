@@ -26,6 +26,18 @@ function events (event) {
     deleteAllTask();
     break;
 
+    case 'button-filter-active':
+    filterTasks('active');
+    break;
+
+    case 'button-filter-complete':
+    filterTasks('complete');
+    break;
+
+    case 'button-filter-all':
+    filterTasks('all');
+    break;
+
     default: return;
   }
 

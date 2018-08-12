@@ -4,13 +4,21 @@ function TaskStorage () {
   this.map = {};
   this.filter = 'all';
   this.completeAll = true;
+  this.filteredStorage = [];
 
 };
 
 TaskStorage.prototype.pushStorage = function (newTask) {
 
-  taskStorage.storage.push(newTask);
   const key = newTask.id
+  this.storage.push(newTask);
+
+  if ( !(this.filter == 'all') ) {
+  this.filteredStorage.push(newTask);
+  this.map[key] = this.filteredStorage.length - 1;
+  return;
+  };
+  
   this.map[key] = this.storage.length - 1;
 
 };
@@ -18,14 +26,27 @@ TaskStorage.prototype.pushStorage = function (newTask) {
 TaskStorage.prototype.findObj =  function (id) {
 
   const storageObjNumber = taskStorage.map[id];
-  const currentObj = taskStorage.storage[storageObjNumber];
+  let currentObj;
+
+  if (this.filter == 'all') {
+    currentObj = taskStorage.storage[storageObjNumber];
+  } else {
+    currentObj = taskStorage.filteredStorage[storageObjNumber];
+  }
   return this.currentObj = currentObj;
 
 };
 
 TaskStorage.prototype.refreshMap = function (){
-
+  
   this.map = {};
+
+  if ( !(this.filter == 'all') ) {
+    this.filteredStorage.forEach(function(item, i) {
+      taskStorage.map[item.id] = i;
+    });
+    return;
+  }
 
   this.storage.forEach(function(item, i) {
     taskStorage.map[item.id] = i;
