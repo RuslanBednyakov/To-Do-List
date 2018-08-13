@@ -5,7 +5,7 @@ function completeTask (id) {
   taskStorage.currentObj.liText.classList.toggle('task__complete');
   taskStorage.currentObj.checked = !(taskStorage.currentObj.checked);
 
-  if ( !(taskStorage.filter == 'add') ) {
+  if ( !(taskStorage.filter == 'all') ) {
     document.querySelector('.container__task_list').removeChild(taskStorage.currentObj.taskDomOdj);
     taskStorage.filteredStorage.splice(taskStorage.map[id], 1);
     taskStorage.refreshMap();
