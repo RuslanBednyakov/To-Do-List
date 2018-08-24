@@ -2,6 +2,7 @@ function TaskStorage () {
 
   this.storage = [];
   this.map = {};
+  this.mapFiltered = {};
   this.filter = 'all';
   this.completeAll = true;
   this.filteredStorage = [];
@@ -10,44 +11,50 @@ function TaskStorage () {
 
 TaskStorage.prototype.pushStorage = function (newTask) {
 
-  const key = newTask.id
+  const key = newTask.id;
   this.storage.push(newTask);
+  this.map[key] = this.storage.length - 1; //new
 
-  if ( !(this.filter == 'all') ) {
+  if ( !(this.filter === 'all') ) {
   this.filteredStorage.push(newTask);
-  this.map[key] = this.filteredStorage.length - 1;
-  return;
-  };
-  
-  this.map[key] = this.storage.length - 1;
+  this.mapFiltered[key] = this.filteredStorage.length - 1;
+  // return;
+  }
+
+  // this.map[key] = this.storage.length - 1;
 
 };
 
 TaskStorage.prototype.findObj =  function (id) {
 
-  const storageObjNumber = taskStorage.map[id];
+  // const storageObjNumber = taskStorage.map[id];
+    let storageObjNumber; //new
   let currentObj;
 
-  if (this.filter == 'all') {
+  if (this.filter === 'all') {
+      storageObjNumber = taskStorage.map[id]; //new;
     currentObj = taskStorage.storage[storageObjNumber];
   } else {
+      storageObjNumber = taskStorage.mapFiltered[id]; //new;
     currentObj = taskStorage.filteredStorage[storageObjNumber];
   }
   return this.currentObj = currentObj;
 
 };
 
-TaskStorage.prototype.refreshMap = function (){
-  
-  this.map = {};
+TaskStorage.prototype.refreshMap = function (all){
 
-  if ( !(this.filter == 'all') ) {
+  // this.map = {};
+
+  if ( !(this.filter === 'all' ) || all) {
+    this.mapFiltered = {};//new
     this.filteredStorage.forEach(function(item, i) {
-      taskStorage.map[item.id] = i;
+      taskStorage.mapFiltered [item.id] = i;
     });
     return;
   }
 
+    this.map = {};//new
   this.storage.forEach(function(item, i) {
     taskStorage.map[item.id] = i;
   });
@@ -62,7 +69,7 @@ function Task (value) {
   this.value = value;
   this.id = new Date();
 
-};
+}
 
 Task.prototype = Object.create(TaskStorage.prototype);
 
@@ -76,7 +83,7 @@ Task.prototype.createElem = function(newElem, elemClass, elemText) {
   if (elemText) {
       const text = document.createTextNode(elemText);
       elem.appendChild(text);
-  };
+  }
 
   return elem;
 

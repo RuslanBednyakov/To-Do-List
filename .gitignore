@@ -1,4 +1,5 @@
 .git
+.idea
 prepros-6.config
 /css/prepros-6.config
 /css/main.scss
