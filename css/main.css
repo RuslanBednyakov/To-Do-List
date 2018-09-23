@@ -94,6 +94,7 @@ body {
           margin: auto 0; }
 
 .button__complete, .button__delete {
+  text-decoration: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 33px;
@@ -112,5 +113,12 @@ body {
     background: #686868;
     color: black; }
 
-.task__complete {
+.task__complete .container__task_list-item-text{
   text-decoration: line-through; }
+
+.container__pagination {
+  text-align: center;}
+  .container__pagination_item {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;}

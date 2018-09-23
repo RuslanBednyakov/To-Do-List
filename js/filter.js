@@ -1,55 +1,22 @@
-function filterTasks(filterName) {
+const Filter =(function() {
+  // let value = 'false';
+  const Filter = function () {
+    this.value = 'all';
+    this.buttonFilterAll = document.getElementById('taskButtonFilterAll');
+    this.buttonFilterComplete = document.getElementById('taskButtonFilterComplete');
+    this.buttonFilterActive = document.getElementById('taskButtonFilterActive');
+  };
 
-  function filterArr(filter) {
-
-    const currentContainer = document.querySelector('.container__task_list');
-    const newContainer = currentContainer.cloneNode(false);
-
-    if (filter === 'all') {
-      taskStorage.storage.forEach(function(task) {
-        newContainer.insertBefore(task.taskDomOdj, newContainer.firstChild);
+  Filter.prototype = {
+    setButtonEvent: function(button, eventName, func, value) {
+      button.addEventListener(eventName, function(){
+        return func(value);
       });
-      taskStorage.refreshMap();
-      document.querySelector('.container__task').replaceChild(newContainer, currentContainer);
-      return;
-    }
+    },
 
-    let filteredStorage = taskStorage.storage.filter(function(task) {
-      return task.checked === filter;
-    });
-
-
-
-    taskStorage.mapFiltered = {};
-    taskStorage.filteredStorage = [];
-
-    filteredStorage.forEach(function(task) {
-      newContainer.insertBefore(task.taskDomOdj, newContainer.firstChild);
-      taskStorage.filteredStorage.push(task);
-      taskStorage.mapFiltered[task.id] = taskStorage.filteredStorage.length - 1;
-    });
-
-    document.querySelector('.container__task').replaceChild(newContainer, currentContainer);
-
-      taskStorage.completeAll = filter;
+    getFilterName: function () {
+      return this.value;
+    },
   }
-
-  switch (filterName) {
-
-    case 'active':
-    filterArr(false);
-    taskStorage.filter = 'active';
-    break;
-
-    case 'complete':
-    filterArr(true);
-    taskStorage.filter = 'complete';
-    break;
-
-    case 'all':
-    taskStorage.filter = 'all';
-    filterArr('all');
-    break;
-
-  }
-}
+  return Filter;
+})()

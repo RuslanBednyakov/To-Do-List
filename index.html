@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/task.js"></script>
+    <script src="js/taskLi.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/pagination.js"></script>
+    <script src="js/mediator.js"></script>
     <title>To Do List</title>
 </head>
 <body>
@@ -24,6 +29,7 @@
         </section>
         <section class="container__task">
             <ul class="container__task_list"></ul>
+            <div class="container__pagination"></div>
             <div class="container__task_filter">
                 <button class="container__task_button button__filter_active" id="taskButtonFilterActive" data-name="button-filter-active"> Active </button>
                 <button class="container__task_button button__filter_complete" id="taskButtonFilterComplete" data-name="button-filter-complete"> Complete </button>
@@ -31,10 +37,9 @@
             </div>
         </section>
     </article>
-    <script src="js/main.js"></script>
-    <script src="js/addTask.js"></script>
-    <script src="js/completeTask.js"></script>
-    <script src="js/deleteTask.js"></script>
-    <script src="js/filter.js"></script>
-    <script src="js/eventListeners.js"></script>
+    <script> 
+        document.addEventListener("DOMContentLoaded", function(){
+            Mediator.run();
+        });
+    </script>
 <body>
